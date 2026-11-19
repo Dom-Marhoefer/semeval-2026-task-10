@@ -1,6 +1,6 @@
 # Subtask 2 — Conspiracy classification (v11 + v25 markers)
 
-Subtask 2 submission: **submission_subtask_2_v11_v25markers.zip** (v11 3-class classifier + v25 span markers).
+Subtask 2 submission: **submission_subtask_2_v11_v25markers.zip** (v11 3-class classifier + v25 span markers) — 12th place on Codabench. The prediction artifacts themselves are not stored in this repository; regenerate them with the submission script below.
 
 ## Methods — where to find our approach
 
@@ -11,23 +11,17 @@ Subtask 2 submission: **submission_subtask_2_v11_v25markers.zip** (v11 3-class c
 
 Markers (span predictions) come from Subtask 1; we use **submission_semeval_token_iou05_v25_ws_finer.jsonl** (v25, token IoU 0.5).
 
-## Files on this branch
+## Files in this folder
 
 **Scripts**
 - `train_conspiracy_subtask_2_v11.py` — trains v11 RoBERTa-large 3-class classifier
 - `submit_subtask_2_v12_v11.py` — builds submission: loads v11 + marker JSONL, writes zip
 
 **Checkpoint (v11)** — `outputs_subtask_2_conspiracy_v11/best/`
-- Config, tokenizer, label_map, metrics (in repo)
-- **model.safetensors** (~1.4 GB) not in repo (GitHub 100 MB limit). Train with `train_conspiracy_subtask_2_v11.py` or copy from your run.
+- Config, label map, and metrics are included in this repository.
+- Tokenizer files and **model.safetensors** (~1.4 GB) are not included (GitHub 100 MB limit). Train with `train_conspiracy_subtask_2_v11.py` or copy them from your own run.
 
-**Submission**
-- `submission_subtask_2_v11_v25markers.jsonl`
-- `submission_subtask_2_v11_v25markers.zip`
+**Data** — not stored in this repository. Regenerate `train_rehydrated.jsonl` and `test_rehydrated.jsonl` at the repo root with `../rehydrate_data.py` (see the top-level README).
 
-**Data (repo root)**  
-- `train_rehydrated.jsonl`, `test_rehydrated.jsonl` (in repo root)  
-- Marker JSONL (e.g. `submission_semeval_token_iou05_v25_ws_finer.jsonl` from Subtask 1) in repo root.
-
-To regenerate the zip (run from `Semeval-Subtask-2/`):  
-`python submit_subtask_2_v12_v11.py --markers ../submission_semeval_token_iou05_v25_ws_finer.jsonl --output_zip submission_subtask_2_v12_v11.zip`
+To regenerate the submission zip (run from the repo root, after Subtask 1 inference has produced the marker file):  
+`python Semeval-Subtask-2/submit_subtask_2_v12_v11.py --markers Semeval-Subtask-1/submission_semeval_token_iou05_v25_ws_finer.jsonl`

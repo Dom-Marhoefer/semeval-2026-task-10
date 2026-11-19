@@ -1,6 +1,6 @@
-# SemEval-Best — Subtask 1 (span extraction)
+# Subtask 1 — Span extraction (v25)
 
-Subtask 1 submission: **submission_semeval_token_iou05_v25_ws_finer.zip** (token IoU ≥ 0.5, v25 span model).
+Subtask 1 submission: **submission_semeval_token_iou05_v25_ws_finer.zip** (token IoU ≥ 0.5, v25 span model) — 7th place on Codabench. The prediction artifacts themselves are not stored in this repository; regenerate them with the retune script below.
 
 ## Methods — where to find our approach
 
@@ -14,9 +14,9 @@ Evaluation for the task uses **token IoU ≥ 0.5**; we use **whitespace tokeniza
 
 ## Model weights not in this repo
 
-**`outputs_span_multilabel_roberta_decode_v25/best/model.pt`** (~1.4 GB) is not pushed because it exceeds GitHub’s 100 MB limit. To run inference or reproduce the submission you need to either:
+**`outputs_span_multilabel_roberta_decode_v25/best/model.pt`** (~1.4 GB) is not pushed because it exceeds GitHub's 100 MB limit. To run inference or reproduce the submission you need to either:
 
 - Copy `model.pt` from your training run into `outputs_span_multilabel_roberta_decode_v25/best/`, or  
 - Train the v25 model with `python roberta_span_w_summary_v25.py` and use the saved checkpoint.
 
-All other files (scripts, tokenizer, thresholds, data, submission zip) are in the repo. See **SUBMISSION_FILES_FOR_GITHUB_BRANCHES.md** for the full file list.
+Checkpoint metrics and the tuned thresholds **are** included under `outputs_span_multilabel_roberta_decode_v25/best/`. Training and test data are not stored in this repository — regenerate `train_rehydrated.jsonl` / `test_rehydrated.jsonl` with `../rehydrate_data.py` (see the top-level README, which also maps the official submissions for both subtasks).
