@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+
+# Model weights (exceed GitHub 100MB limit)
+**/model.pt
+**/*.safetensors
+
+# Nested repo (optional: remove if you want single history)
+Semeval-Subtask-1/.git/
+
+# Writeup and docs (local only; do not push)
+final_writeup.tex
+edits.tex
+guidelines.md
+Semeval_Final_Project_Draft__Copy_ (2).pdf
+WRITEUP_CODE_AUDIT.md
+SUBMISSION_FILES_FOR_GITHUB_BRANCHES.md
+
+# Nested .git backup (do not push)
+Semeval-Subtask-1/.git.bak/
+
+# Rehydrated task data (regenerate locally with rehydrate_data.py)
+train_rehydrated.jsonl
+test_rehydrated.jsonl
